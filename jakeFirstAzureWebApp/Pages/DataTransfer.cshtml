@@ -1,0 +1,37 @@
+﻿@page
+@model DataTransferModel
+@{
+    ViewData["Title"] = "DataTransfer";
+}
+
+<h1>Data Transfer</h1>
+<p>This table should be populated with the same values that were on the previous page, data is passed via Session rather than retreived by database call.</p>
+@if (Model.tableItems.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tableItem in Model.tableItems)
+            {
+                <tr>
+                    <td>@tableItem.Name</td>
+                    <td>@tableItem.Description</td>
+                    <td>@tableItem.Count.ToString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="alert-danger rounded p-2">Could not load table, TableItems does not contain any items.</p>
+}
+
+<a class="btn btn-primary" asp-page="/Index">Back to Home</a>
+

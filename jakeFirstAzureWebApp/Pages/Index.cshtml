@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4">This is a test page</h1>
+    <p>The purpose of this site is simply to test how to deploy a web app to Azure along with performing some basic backend logic with Razor pages.</p>
+</div>
+
+<section>
+    <h2>An Example Table</h2>
+    <p>This table exists to test performing C# operations in the Get function of the Razor page.</p>
+    @if (Model.tableItems.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var tableItem in Model.tableItems)
+                {
+                    <tr>
+                        <td>@tableItem.Name</td>
+                        <td>@tableItem.Description</td>
+                        <td>@tableItem.Count.ToString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+
+        <p class="alert-danger rounded p-2">Could not load table, TableItems does not contain any items.</p>
+
+    }
+    <a class="btn btn-primary" asp-page="/DataTransfer">Go to Data Transfer Example Page</a>
+</section>
